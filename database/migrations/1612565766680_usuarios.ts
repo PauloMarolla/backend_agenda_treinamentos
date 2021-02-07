@@ -6,7 +6,16 @@ export default class Usuarios extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.timestamps(true)
+      table.string('nome')
+      table.string('email').unique()
+      table.string('email_secundario').nullable().defaultTo(null)
+      table.string('senha')
+      table.boolean('ativo').defaultTo(true)
+      table.enum('empresa', ['SS', 'EC'])
+      table.enum('grupo', ['admin', 'usuario', 'lider', 'convidado']).defaultTo('usuario')
+      table.string('avatar').nullable().defaultTo(null)
+      table.timestamp('criado_em').nullable()
+      table.timestamp('atualizado_em').nullable()
     })
   }
 
