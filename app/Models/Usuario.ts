@@ -17,7 +17,7 @@ export default class Usuario extends BaseModel {
   public email_secundario: string
 
   @column()
-  public senha: string
+  public password: string
 
   @column()
   public ativo: boolean
@@ -40,8 +40,8 @@ export default class Usuario extends BaseModel {
 
   @beforeSave()
   public static async hashPassword (usuario: Usuario) {
-    if(usuario.$dirty.senha) {
-      usuario.senha = await Hash.make(usuario.senha)
+    if(usuario.$dirty.password) {
+      usuario.password = await Hash.make(usuario.password)
     }
   }
 }

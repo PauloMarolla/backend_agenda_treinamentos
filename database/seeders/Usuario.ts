@@ -11,7 +11,7 @@ export default class UsuarioSeeder extends BaseSeeder {
       email: 'paulo.ricardo.marolla@hotmail.com',
       empresa: 'SS',
       grupo: 'admin',
-      senha: 'Abc102030*',
+      password: 'Abc102030*',
       email_secundario: 'asd'
     },{
       nome: 'Marolla',
@@ -19,7 +19,7 @@ export default class UsuarioSeeder extends BaseSeeder {
       email: 'marolaum@hotmail.com',
       empresa: 'EC',
       grupo: 'lider',
-      senha: 'Abc102030*',
+      password: 'Abc102030*',
     }])
   }
 }
