@@ -25,3 +25,4 @@ Route.get('/', async () => {
 })
 
 Route.post('/login', 'AuthController.login')
+Route.get('/me', 'AuthController.me')
