@@ -8,11 +8,11 @@ export default class AuthController {
 
     const token = await auth.use('api').attempt(email, password)
 
-    return auth.user;
+    return token;
   }
 
   public async me({auth}: HttpContextContract) {
-    return auth.user;
+    return auth.authenticate();
   }
 
   public async logout({auth}: HttpContextContract) {
