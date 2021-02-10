@@ -20,6 +20,8 @@ import Server from '@ioc:Adonis/Core/Server'
 | are defined for every HTTP requests.
 |
 */
+
+
 Server.middleware.register(['Adonis/Core/BodyParserMiddleware'])
 
 /*
@@ -38,4 +40,6 @@ Server.middleware.register(['Adonis/Core/BodyParserMiddleware'])
 | Route.get('dashboard', 'UserController.dashboard').middleware('auth')
 |
 */
-Server.middleware.registerNamed({})
+Server.middleware.registerNamed({
+  auth: 'App/Middleware/Auth',
+})

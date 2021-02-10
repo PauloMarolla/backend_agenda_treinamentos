@@ -5,24 +5,24 @@ export default class AuthController {
     const password = request.input('password');
 
     const token = await auth.use('api').attempt(email, password, {
-      expiresIn: '10 days',
+      expiresIn: '12 hours',
     });
 
     const data = { ...token };
 
     return response.json({
       token: data.token,
-      user: {
-        nome: data.user.nome,
-        email: data.user.email,
-        email_secundario: data.user.email_secundario,
-        ativo: data.user.ativo,
-        empresa: data.user.empresa,
-        grupo: data.user.grupo,
-        avatar: data.user.avatar,
-        criado_em: data.user.criado_em,
-        atualizado_em: data.user.atualizado_em,
-      },
+      expires_in: data.expiresAt,
+      id: data.user.id,
+      nome: data.user.nome,
+      email: data.user.email,
+      email_secundario: data.user.email_secundario,
+      ativo: data.user.ativo,
+      empresa: data.user.empresa,
+      grupo: data.user.grupo,
+      avatar: data.user.avatar,
+      criado_em: data.user.criado_em,
+      atualizado_em: data.user.atualizado_em,
     });
   }
 

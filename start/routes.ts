@@ -24,3 +24,7 @@ import AuthController from 'App/Controllers/Http/AuthController';
 Route.post('/login', 'AuthController.login');
 Route.get('/me', 'AuthController.me');
 Route.get('/logout', 'AuthController.logout');
+
+Route.resource('/usuarios', 'UsuariosController').apiOnly()
+.middleware({ '*': ['auth']})
+
