@@ -31,7 +31,7 @@ export default class Usuario extends BaseModel {
   @column()
   public avatar: string
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({ autoCreate: true, serialize: (value) => value.toFormat('dd/MM/yyyy HH:mm:ss') })
   public criado_em: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true})
