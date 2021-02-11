@@ -1,6 +1,5 @@
 import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
 import Usuario from 'App/Models/Usuario'
-// import Hash from '@ioc:Adonis/Core/Hash'
 
 export default class UsuarioSeeder extends BaseSeeder {
   public async run() {
