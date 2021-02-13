@@ -5,10 +5,10 @@ export default class Treinamentos extends BaseSchema {
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments()
+
+      table.increments('id')
       table.boolean('ativo').defaultTo(true)
       table.string('nome')
-
       table
       .integer('sistema_id')
       .unsigned()
@@ -16,7 +16,6 @@ export default class Treinamentos extends BaseSchema {
       .references('id')
       .inTable('sistemas')
       .onDelete('CASCADE')
-
       table
       .integer('instrutor_id')
       .unsigned()
@@ -24,9 +23,9 @@ export default class Treinamentos extends BaseSchema {
       .references('id')
       .inTable('instrutores')
       .onDelete('CASCADE')
-
       table.time('inicio')
       table.integer('duracao').comment('em minutos').nullable()
+
       table.timestamp('criado_em').nullable()
       table.timestamp('atualizado_em').nullable()
     })
