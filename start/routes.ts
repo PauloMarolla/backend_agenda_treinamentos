@@ -22,9 +22,13 @@ import Route from '@ioc:Adonis/Core/Route';
 import AuthController from 'App/Controllers/Http/AuthController';
 
 Route.post('/login', 'AuthController.login');
-Route.get('/me', 'AuthController.me');
-Route.get('/logout', 'AuthController.logout');
+
+Route.get('/me', 'AuthController.me').middleware('auth');
+Route.get('/logout', 'AuthController.logout').middleware('auth');
 
 Route.resource('/usuarios', 'UsuariosController').apiOnly()
+.middleware({ '*': ['auth']})
+
+Route.resource('/instrutores', 'InstrutoresController').apiOnly()
 .middleware({ '*': ['auth']})
 
