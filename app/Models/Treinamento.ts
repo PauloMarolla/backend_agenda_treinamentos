@@ -12,11 +12,20 @@ export default class Treinamento extends BaseModel {
   public nome: string
 
   @column()
-  public sistema_id: string
+  public sistema_id: number
 
-  @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime
+  @column()
+  public instrutor_id: number
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime
+  @column.dateTime({serialize: (value) => value.toFormat('HH:mm:ss') })
+  public inicio: DateTime
+
+  @column()
+  public duracao: number
+
+  @column.dateTime({ autoCreate: true, serialize: (value) => value.toFormat('dd/MM/yyyy HH:mm:ss') })
+  public criado_em: DateTime
+
+  @column.dateTime({ autoCreate: true, autoUpdate: true, serialize: (value) => value.toFormat('dd/MM/yyyy HH:mm:ss') })
+  public atualizado_em: DateTime
 }

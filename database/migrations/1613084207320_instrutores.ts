@@ -9,10 +9,9 @@ export default class Instrutores extends BaseSchema {
       table.string('nome')
       table.string('email_ss')
       table.string('email_ec')
-      // table.boolean('senha')
       table.boolean('ativo').defaultTo(true)
       table.timestamp('criado_em').nullable()
-      // table.timestamp('atualizado_em').nullable()
+      table.timestamp('atualizado_em').nullable()
     })
   }
 
