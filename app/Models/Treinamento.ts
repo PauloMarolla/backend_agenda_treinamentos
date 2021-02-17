@@ -17,11 +17,11 @@ export default class Treinamento extends BaseModel {
   @column()
   public instrutor_id: number
 
-  @column.dateTime({serialize: (value) => value.toFormat('HH:mm:ss') })
-  public inicio: DateTime
-
   @column()
   public duracao: number
+
+  @column.dateTime()
+  public inicio: DateTime
 
   @column.dateTime({ autoCreate: true, serialize: (value) => value.toFormat('dd/MM/yyyy HH:mm:ss') })
   public criado_em: DateTime

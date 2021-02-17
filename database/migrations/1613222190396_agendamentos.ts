@@ -10,13 +10,11 @@ export default class Agendamentos extends BaseSchema {
       table
       .integer('treinamento_id')
       .unsigned()
-      .notNullable()
       .references('id')
       .inTable('treinamentos')
       table
       .integer('cliente_id')
       .unsigned()
-      .notNullable()
       .references('id')
       .inTable('clientes')
       table.string('observacao')

@@ -6,6 +6,7 @@ export default class UsuariosController {
 
     return users;
   }
+
   async store({request}: HttpContextContract) {
     let user = await Usuario.create(request.all())
 

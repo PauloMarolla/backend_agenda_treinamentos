@@ -6,7 +6,7 @@ export default class Treinamentos extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
 
-      table.increments('id')
+      table.increments('id').primary()
       table.boolean('ativo').defaultTo(true)
       table.string('nome')
       table
