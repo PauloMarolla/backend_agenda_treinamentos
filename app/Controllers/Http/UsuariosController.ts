@@ -1,6 +1,7 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import Usuario from 'App/Models/Usuario'
+import { messages } from '../validation/messages';
+import { usuarioSchema } from '../Request/usuario/storeUsuario'
 
 export default class UsuariosController {
   async index() {
@@ -10,26 +11,10 @@ export default class UsuariosController {
   }
 
   async store({request}: HttpContextContract) {
-
-    const usuarioSchema = schema.create({
-      nome: schema.string({}, [
-        rules.minLength(3)
-      ]),
-      email: schema.string({}, [
-        rules.email(),
-        rules.unique({table: 'usuarios', column: 'email'})
-      ]),
-      empresa: schema.enum(['SS', 'EC']),
-      grupo: schema.enum(['admin', 'lider', 'usuario', 'convidado']),
-      password: schema.string({}, [
-        rules.required()
-      ])
+    const validatedData = await request.validate({
+      schema: usuarioSchema,
+      messages: messages
     })
-
-    const validatedData = await request.validate({schema: usuarioSchema, messages: {
-      'nome': 'nao sei',
-      'email.unique' : 'Seu email já está em uso'
-    }})
 
     let user = await Usuario.create(validatedData)
 
