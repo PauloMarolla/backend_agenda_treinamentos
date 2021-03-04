@@ -1,4 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import { treinamentoSchema } from '../Request/treinamento/storeTreinamento'
+import { messages } from '../validation/messages'
 import Treinamento from 'App/Models/Treinamento'
 
 export default class TreinamentosController {
@@ -9,7 +11,12 @@ export default class TreinamentosController {
   }
 
   async store({request}: HttpContextContract) {
-    let treinamento = await Treinamento.create(request.all());
+    const validatedData = await request.validate({
+      schema: treinamentoSchema,
+      messages: messages
+    })
+
+    let treinamento = await Treinamento.create(validatedData);
 
     return treinamento;
   }

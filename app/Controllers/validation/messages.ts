@@ -5,4 +5,6 @@ export const  messages = {
   'minLength': 'O campo {{field}} deve ter no mínimo {{options.minLength}} caracteres',
   'maxLength': 'O campo {{field}} deve ter no Máximo {{options.maxLength}} caracteres',
   'email.unique' : 'Seu {{field}} já está em uso',
+  'email' : 'O campo {{field}} não tem um formato válido',
+  'boolean': 'O campo {{field}} apenas aceita valores verdadeiro ou falso'
 }

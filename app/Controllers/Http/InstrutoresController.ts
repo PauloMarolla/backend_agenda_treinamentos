@@ -1,4 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import { instrutorSchema } from '../Request/instrutor/storeInstrutor'
+import { messages } from '../validation/messages'
 import Instrutor from 'App/Models/Instrutore'
 
 export default class InstrutoresController {
@@ -9,7 +11,12 @@ export default class InstrutoresController {
   }
 
   async store({request}: HttpContextContract) {
-    let instrutor = await Instrutor.create(request.all())
+    const validatedData = await request.validate({
+      schema: instrutorSchema,
+      messages: messages
+    })
+
+    let instrutor = await Instrutor.create(validatedData)
 
     return instrutor;
   }
