@@ -30,6 +30,15 @@ export default class TreinamentosController {
   async update({params, request}: HttpContextContract) {
     let treinamento = await Treinamento.findOrFail(params.id);
 
+    treinamento.ativo = await request.input('ativo');
+    treinamento.nome = await request.input('nome');
+    treinamento.inicio = await request.input('inicio');
+    treinamento.duracao = await request.input('duracao');
+    treinamento.sistema_id = await request.input('sistema_id');
+    treinamento.instrutor_id = await request.input('instrutor_id');
+
+    await treinamento.save()
+
     return treinamento;
   }
 

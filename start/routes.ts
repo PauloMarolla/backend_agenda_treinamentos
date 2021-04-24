@@ -35,3 +35,6 @@ Route.resource('/instrutores', 'InstrutoresController').apiOnly()
 Route.resource('/treinamentos', 'TreinamentosController').apiOnly()
 .middleware({ '*': ['auth']})
 
+Route.resource('/agendamentos', 'AgendamentosController').apiOnly()
+.middleware({ '*': ['auth']})
+
